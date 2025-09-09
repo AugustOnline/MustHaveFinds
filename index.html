@@ -1,530 +1,141 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =========================================
-       SEO + Meta
-       ========================================= -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Augusts Amazon Finds — Best Picks for 2025</title>
-  <meta name="description" content="Discover the best Amazon products for 2025 — curated just for you. Home gadgets, gaming essentials, desk setups, and dorm room must-haves." />
-  <meta name="author" content="August Vankina" />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://YOUR_USERNAME.github.io/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Product Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Reset and body */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', sans-serif; background:#f5f7fb; color:#1f2937; line-height:1.6; }
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Augusts Amazon Finds — Best Picks for 2025" />
-  <meta property="og:description" content="Curated Amazon picks for 2025: home gadgets, gaming, desk setup, and dorm essentials." />
-  <meta property="og:url" content="https://YOUR_USERNAME.github.io/" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1200&auto=format&fit=crop" />
-  <meta name="twitter:card" content="summary_large_image" />
+/* Header */
+header { padding:2rem 1rem; text-align:center; background:linear-gradient(135deg,#4f46e5,#6366f1); color:#fff; }
+header h1 { font-size:2.5rem; margin-bottom:0.5rem; font-weight:700; }
+header p { font-size:1.2rem; color:rgba(255,255,255,0.85); }
 
-  <!-- Preconnect for performance (safe even if unused) -->
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <link rel="preconnect" href="https://source.unsplash.com" crossorigin>
+/* Search */
+#search-container { display:flex; justify-content:center; margin:2rem 1rem; }
+#search { width:100%; max-width:500px; padding:0.75rem 1rem; border-radius:12px; border:1px solid #ddd; font-size:1rem; transition:all 0.3s; }
+#search:focus { outline:none; border-color:#4f46e5; box-shadow:0 4px 12px rgba(79,70,229,0.2); }
 
-  <!-- =========================================
-       Styles (mobile-first, minimalist)
-       ========================================= -->
-  <style>
-    :root{
-      --bg: #ffffff;
-      --text:#111827; /* nearly black */
-      --muted:#6b7280; /* gray-500 */
-      --accent:#4F46E5; /* indigo-600 */
-      --accent-ink:#ffffff;
-      --card:#f8fafc;  /* slate-50 */
-      --ring:#e5e7eb;  /* gray-200 */
-      --maxw:1100px;
-      --radius:14px;
-      --shadow:0 6px 24px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
-    }
+/* Categories */
+#categories { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:2rem; }
+#categories button { padding:0.6rem 1.2rem; border:none; border-radius:8px; font-weight:600; background:#e0e7ff; color:#4f46e5; transition:all 0.3s; cursor:pointer; }
+#categories button:hover { background:#4f46e5; color:#fff; transform:scale(1.05); }
+#categories button.active { background:#4f46e5; color:#fff; }
 
-    /* Base */
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height:1.6;
-      color:var(--text);
-      background:var(--bg);
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
-    img{max-width:100%; display:block;}
-    a{color:inherit; text-decoration:none;}
-    .container{width:100%; max-width:var(--maxw); margin-inline:auto; padding: clamp(14px, 3vw, 24px);}
+/* Products Grid */
+#products { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; padding:0 1rem 3rem; }
+.product-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.15); }
+.product-card img { width:100%; height:220px; object-fit:cover; transition:transform 0.3s; }
+.product-card img:hover { transform:scale(1.05); }
+.product-info { padding:1rem; display:flex; flex-direction:column; flex:1; }
+.product-info h3 { font-size:1.25rem; margin-bottom:0.5rem; color:#1e293b; font-weight:600; }
+.product-info p { flex:1; font-size:0.95rem; margin-bottom:1rem; color:#475569; }
+.price { font-weight:700; color:#4f46e5; margin-bottom:0.5rem; }
+.buy-button { display:inline-block; text-align:center; padding:0.75rem 1rem; background:#4f46e5; color:#fff; font-weight:600; border-radius:12px; transition:all 0.3s; text-decoration:none; }
+.buy-button:hover { background:#6366f1; transform:scale(1.05); }
 
-    /* Sticky Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(180%) blur(10px);
-      background:color-mix(in srgb, var(--bg) 80%, transparent);
-      border-bottom:1px solid var(--ring);
-    }
-    .nav{
-      display:flex; align-items:center; gap:10px; justify-content:space-between;
-    }
-    .brand{
-      font-weight:800; letter-spacing:0.2px;
-      display:flex; align-items:center; gap:10px;
-    }
-    .brand .dot{width:10px; height:10px; border-radius:50%; background:var(--accent);}
-    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:12px; overflow:auto;}
-    nav a{
-      padding:8px 12px; border-radius:999px; font-weight:600; white-space:nowrap;
-      border:1px solid transparent;
-    }
-    nav a.active, nav a:hover{border-color:var(--ring); background:#f3f4f6;}
+/* Footer */
+footer { text-align:center; padding:2rem 1rem; background:#1f2937; color:#fff; font-size:0.9rem; }
 
-    /* Hero */
-    .hero{
-      padding: clamp(28px, 7vw, 64px) 0;
-      display:grid; gap:18px;
-      text-align:left;
-    }
-    .kicker{color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.8rem;}
-    h1{font-size: clamp(1.6rem, 4.5vw, 2.6rem); line-height:1.2; margin:6px 0;}
-    .hero p{color:var(--muted); max-width:60ch; margin:0;}
-    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px; border-radius:12px; border:1px solid var(--ring); font-weight:700;
-    }
-    .btn-primary{background:var(--accent); color:var(--accent-ink); border-color:transparent;}
-    .btn-primary:hover{filter:brightness(0.95)}
-    .btn-light:hover{background:#f3f4f6}
-
-    /* Sections */
-    section.category{scroll-margin-top:90px;}
-    .section-head{
-      display:flex; align-items:end; justify-content:space-between; gap:10px;
-      margin: 8px 0 14px 0;
-    }
-    .section-head h2{
-      font-size: clamp(1.2rem, 3.4vw, 1.8rem); margin:0;
-    }
-    .grid{
-      display:grid; gap:14px;
-      grid-template-columns: 1fr 1fr;
-    }
-    @media (min-width: 780px){
-      .grid{grid-template-columns: repeat(3, 1fr);}
-    }
-    @media (min-width: 1040px){
-      .grid{grid-template-columns: repeat(4, 1fr);}
-    }
-
-    /* Card */
-    .card{
-      background:var(--card);
-      border:1px solid var(--ring);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      display:flex; flex-direction:column; min-height:100%;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .card:hover{transform: translateY(-2px)}
-    .thumb{
-      aspect-ratio: 16/10;
-      background:#e5e7eb;
-      display:block; overflow:hidden;
-    }
-    .thumb img{width:100%; height:100%; object-fit:cover;}
-    .card-body{padding:14px; display:grid; gap:8px;}
-    .title{font-weight:800; line-height:1.25;}
-    .desc{color:var(--muted); font-size:.95rem;}
-    .card .btn-primary{margin-top:2px; text-align:center; padding:12px; width:100%;}
-    .price-note{font-size:.8rem; color:var(--muted)}
-
-    /* Footer */
-    footer{
-      margin-top:40px; border-top:1px solid var(--ring);
-      color:var(--muted);
-    }
-
-    /* Utilities */
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
-    .pill{font-size:.85rem; color:var(--muted);}
-
-    /* Reduce motion friendly */
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .card{transition:none}
-    }
-  </style>
-
-  <!-- Minimal JS: highlight current nav link -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const links = document.querySelectorAll('nav a[data-scroll]');
-      const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
-      const setActive = () => {
-        const y = window.scrollY + 120;
-        let activeIndex = 0;
-        sections.forEach((sec, i) => { if (sec && sec.offsetTop <= y) activeIndex = i; });
-        links.forEach((a,i) => a.classList.toggle('active', i === activeIndex));
-      };
-      setActive();
-      document.addEventListener('scroll', setActive, {passive:true});
-    });
-  </script>
-
-  <!-- Structured Data (optional, generic) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Augusts’s Amazon Finds",
-    "url": "https://YOUR_USERNAME.github.io/",
-    "description": "Curated Amazon picks for 2025: Home gadgets, gaming, desk, and dorm essentials."
-  }
-  </script>
+/* Responsive */
+@media(max-width:768px){ header h1{font-size:2rem;} #search{max-width:100%;} }
+@media(max-width:480px){ .product-card img{height:180px;} header h1{font-size:1.8rem;} }
+</style>
 </head>
 <body>
-  <a class="sr-only" href="#main">Skip to content</a>
 
-  <!-- ============== Header ============== -->
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
-        <span>August’s Amazon Finds</span>
-      </div>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a data-scroll href="#home-gadgets">Home Gadgets</a></li>
-          <li><a data-scroll href="#gaming-essentials">Gaming Essentials</a></li>
-          <li><a data-scroll href="#desk-setup">Desk Setup</a></li>
-          <li><a data-scroll href="#dorm-must-haves">Dorm Must-Haves</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header>
+<h1>Ultimate Product Showcase</h1>
+<p>Discover top gadgets, home essentials, gaming gear, and lifestyle products</p>
+</header>
 
-  <!-- ============== Hero / CTA ============== -->
-  <main id="main" class="container">
-    <section class="hero" aria-labelledby="hero-title">
-      <span class="kicker">2025 Curations</span>
-      <h1 id="hero-title">Discover the best Amazon products for 2025 — curated just for you.</h1>
-      <p>Fast picks with zero fluff. Scroll by category, tap a product, and <strong>check price on Amazon</strong> in one click.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#home-gadgets" aria-label="Jump to Home Gadgets">Shop Home Gadgets</a>
-        <a class="btn btn-light" href="#gaming-essentials" aria-label="Jump to Gaming Essentials">Gaming Picks</a>
-        <a class="btn btn-light" href="#desk-setup" aria-label="Jump to Desk Setup">Desk Setup</a>
-        <a class="btn btn-light" href="#dorm-must-haves" aria-label="Jump to Dorm Must-Haves">Dorm Essentials</a>
-      </div>
-    </section>
+<div id="search-container">
+<input type="text" id="search" placeholder="Search products...">
+</div>
 
-    <!-- =========================================================
-         CATEGORY 1: HOME GADGETS
-         Tip: Replace IMG src with your own image URLs.
-         Replace href="#" with your Amazon affiliate links.
-         ========================================================= -->
-    <section id="home-gadgets" class="category" aria-labelledby="home-gadgets-title">
-      <div class="section-head">
-        <h2 id="home-gadgets-title">Home Gadgets</h2>
-        <span class="pill">4 quick wins</span>
-      </div>
-      <div class="grid">
+<div id="categories"></div>
 
-        <!-- Card -->
-        <article class="card">
-          <a class="thumb" href="#" aria-label="Check Price on Amazon">
-            <!-- 🔁 IMAGE: replace the src below with your product image -->
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://media.istockphoto.com/id/614868562/vector/american-socket.jpg?s=612x612&w=0&k=20&c=PYrX52dwBxVIjys1S5M8T1BviEVxcZmMUwGa89BTQZw="
-                 alt="Sleek smart plug in a minimalist living room outlet">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Make any outlet smart in 60 seconds</h3>
-            <p class="desc">Instant voice + app control for lamps, fans, and more — no hub required and setup is a breeze.</p>
-            <!-- 🔁 LINK: put your Amazon affiliate URL in the href -->
-            <a class="btn btn-primary" href="https://amzn.to/42bKOpm" target="_blank" rel="nofollow sponsored noopener">
-              Check Price on Amazon
-            </a>
-            <span class="price-note">Prime eligible · Usually under $25</span>
-          </div>
-        </article>
+<div id="products"></div>
 
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://static.vecteezy.com/system/resources/thumbnails/032/473/849/small_2x/robotic-vacuum-cleaner-on-laminate-wood-floor-modern-smart-cleaning-technology-ai-generative-photo.jpg"
-                 alt="Robot vacuum gliding across hardwood floor">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Hands-free clean while you’re out</h3>
-            <p class="desc">Set-and-forget vacuuming with smart mapping, edge cleaning, and auto-dock charging.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4m1DOm8" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Top seller · Multi-room mapping</span>
-          </div>
-        </article>
+<footer>
+<p>&copy; 2025 Ultimate Product Showcase. All rights reserved.</p>
+</footer>
 
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDg0NDQ0NDQ0NDQ0HCA0NDQ8NDQ0NFREiFhURExUYHiggGBolHR8WLTEhJSk3Li4uFx8zODMwNyg5LisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALUBFwMBIgACEQEDEQH/xAAcAAEAAwADAQEAAAAAAAAAAAAAAQIDBgcIBQT/xABNEAABAgMCAxANCwUBAQAAAAAAAQIDBBEFEjFVsgYHExczNXFyc3SRkpOxs9IVITI0QVFUgYKk0eLwFBYjJEJhdZShosEiRFLC4YND/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AO8QAAB+K2rRbJyszNva57ZaDEnHsbRHORjbyole1U6s0+pTFs1y0IDuAHT+n1KYtmuWgjT6lMWzXLQQO4AdP6fUpi2a5aCNPqUxbNctBA7gB0/p9SmLZrloI0+pTFs1y0EDuAHT+n1KYtmuWgjT6lMWzXLQQO4AdP6fUpi2a5aCNPqUxbNctBA7gB0/p9SmLZrloI0+pTFs1y0EDuAHT+n1KYtmuWgjT6lMWzXLQQO4AdP6fUpi2a5aCfusnPkZORNDgWVNuXtLEcsaEkOGnjc7wc6+ADtIHC/n0/yH1n3B8+n+Q+s+4BzQHC/n0/yH1n3CPn2/yH1n3AOag4Subx/kPrPuELm+d5D6ynUA5uDgy54Sp/Yr+ZTqGbs8en9iv5lOoBz0HXrs85E/sHfmG9Uxfnrw0wyET8w3qgdkA6xfnwwW4bPi8uz2H54mfZLtqq2dMdrt9qNDqB2sDOXiX2MfSl9rYlMNKpWhoAAAAAAfBze60WpvCa6JTyfZ/dN2v8HrDN7rRam8JrolPJ9n903agfSr8UIr8UAAV+KCoACoqAAqSQSAr8UFfigFAHxgJr8UAoAr8UQmvxRBQUAVX4RCyPVMC0K0JoBbRHeNRojvGpWhlEi+BOEDV8wqeFVUwWO9ftKUAF9Gf/ko0Z/+SlABfRnf5KRorvGpUAW0V3j5hojvHzFaCgFtEd4/0Q/PGi/Z+5E/Q2ofOmH/AEtNqn7UA9myGowdyh5KG5hIajB3KHkobgAAAAAHwc3utFqbwmuiU8n2f3SbU9YZvdaLU3hNdEp5Ps7u27VeYD6IJAEAkkCASAIoSTQlEArQmhahNAK0FC1CQK0BYmgFaEKqJhJe9E2fEfncqrhAPeq/chShYmgFKE0LUFAK0FC9BQClCaF0QUApQUL0JoBnQ+TM6vxchD7VD4s13wvoZCAez5DUYO5Q8lDcwkNRg7lDyUNwAAAAAD4Ob3Wi1N4TXRKeULO7tu1U9X5vdaLU3hNdEp5Qs3u27VQPpAmhNAK0JoWoTQCqITQtQmgFaE0LUFAIoKFqCgEUFC1AvawgVoZvieBOEh767BSgFRQtQmgFaChe6TdApQUNLpZGgZXSbprdJugZXRdNbpN0DK6LprdF0DK6fCm++F9DIQ5FdOPTvfK+hkIB7NkNRg7lDyUNzCQ1GDuUPJQ3AAAAAAPg5vdaLU3hNdEp5Rszu27VeY9XZvdaLU3hNdEp5RsrVG7VeYD6tBQvQUArQmhahNAIoKF7pKNAoSWoTdAoSWoUe/wIBD3U9hg5VXD5i1CaAUoLpehZGgZ3SyNLo0sjQM0aSjTVGFkYBkjSbpqjS10DG6TdNbpN0DK6LprdF0DK6LprdF0DK6can++nehkIcqocWtHvp3oZCAey5DUYO5Q8lDcwkNRg7lDyUNwAAAAAD4Ob3Wi1N4TXRKeU7IT6Ru1XmPVmb3Wi1N4TXRKeVLG1Vu1XmA+zdF00oKAUuk0L0JoBShNC1CaAUoFJcqJ/Bi5VX+AD317SYClC1CUaBShKIaI0sjQM0aWRhojS6MAzRhZGmqMLIwDJGk3TZGFroGN0m6a3SboGN0XTa6LoGN0XTa6RQDK6RQ1oQqAZUOKWl3270MhDl1DiNp99u9DIQD2VIajB3KHkobmEhqMHcoeShuAAAAAAfBze60WpvCa6JTyrYmqt2i8x6qze60WpvCa6JTzbZWZ6YhQknIyaE1bsODCcn0jkd9pU+yn67AG9CaFqCgFaChahIFaFHvpgwh764ClAKUqTdLohZGgURpZGl0aXRgGaNLow0aw0RgGSMLow1RhZGgZowlGmqNJugZXSbprcF0DO6LprdIugZXRQ0ukUAzoQqGioVUDNSql1KKBVTiFp99u9DIQ5aqnFLQY502+6irdRsR1EwNSGlVX7gPZEhqMHcoeShuYSGowdyh5KG4AAAAAB8DPA1ntb8Pm+iU6jtzvOHsweY7czwNZ7W/D5volOpLb7zh7MHmA4rQmhahR76bIByohi5VX2Er2wiAVoWRpZGl0aBRGlkYaNYaNYBm1ho1ho1ho1gGSMNEYaIwujQMkYWRppdJugZ3SaGlBQDOgoaUIoBShFC9CFAoqFFLqZuUCqlFUlylHKBVylHKS5TNVAhVPxTj2MhxEa1EdEZ9K7wuW7RKqfsU+LaET+pyfciftA9dSGowdyh5KG5hIajB3KHkobgAAAAAHwM8DWe1vw+b6JTqO2l+pw/wDx5jtzPA1ntb8Pm+iU6ft1fqcPZg8wHGXxPFwlKEohZEAqiF0aWRpdGgVa0u1pdrTRrAKNYatYXa00RoFEYXRpdELIgFEaWoWoSBShNCwArQihYgCKEKSqlVUCFKKocpm5wBymTlDnGbnAHKUVQqlFUCFUqoVSAIOPWi/6ZybVP2IciOLWkv1p2yzIQD2TIajB3KHkobmEhqMHcoeShuAAAAAAfAzf6z2r+HzfRKdRTDGR4ENmiI1LsN9UVFwNO/AB5yWxoaf/AGVfM0otmNTA9y+ZD0gAPNTpOmC+vmT2GTob0wQ4q+b/AIemgB5gdFipgloy8PVM3T0wmCSjrxuoeowB5XW1ZtMFnR19J3UHZicxZMcZeoeqAB5Y7MzmLJjjL1B2anMWTHGXqHqcAeWezU5iyY4y9QdmpzFkxxl6h6mAHldbdm0w2bGTZiU/0I7PTWLovKe4dgZ/WZ9saZk5xa1+TPknImBUhxLyZanUTZWGq0uN8WAD7yW5Nrgs2Muw+v8AoOzM5iyY4y9Q7TziLFbLQp6OiU0ZZeWRPFcRzly04DtUDystsTmLJjjL1CFtacxbMcZeoeqgB5TW05zFsxxl6hVbRnMWzHCvUPVwA8nrPTmLpjhXqH6ZBZmM5dElYkBid057/wCpfua272z1OAPL8aC9MEKM7Yb/AMPyPWOmCUjr5l6p6rAHk50Wa8EjMLxuoZrMTeL5jhXqHrUAeSvlE3i+Z4V6h8qYs+biRlirKxobe0515q0ajW0VVcqIngPZQAwkNRg7lDyUNwAAAAAAAAAAAAAAAAAAAAA4xm1zHMtj5NfmY8t8n0VW6CtL9+7h2Lv6nF9JyBjOe4U9oHZ4OsNJyBjOe4U9o0nIGM57hT2gfaz1ZVHycJ9K3Iys8zmr7DoOXl/rVymByqdwuzmpde0tpTqp4lVFTnKaSsp5fNcVgHK87iW0Oz2LSmiRIkbZwN/g5QdXpnNy6dpLSnUTwIioic5Ok5AxnPcKe0Ds8HWGk5AxnPcKe0aTkDGc9wp7QOzwfAzG5mWWRLxJdkeNMJEjunVfGWrmqrGtup939P6qffAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//9k="
-                 alt="LED light strip glowing behind a TV">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Cinematic glow for your TV</h3>
-            <p class="desc">Bias lighting reduces eye strain and makes colors pop. Peel, stick, and plug in.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4palYQJ" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Easy install · Remote included</span>
-          </div>
-        </article>
+<script>
+// ================== Product Data ==================
+const products = [
+{Category:"Home Gadgets",Title:"Make any outlet smart in 60 seconds",Description:"Instant voice + app control for lamps, fans, and more — no hub required and setup is a breeze.",AmazonLink:"https://amzn.to/42bKOpm",PriceNote:"Prime eligible · Usually under $25",ImageURL:"https://media.istockphoto.com/id/614868562/vector/american-socket.jpg?s=612x612&w=0&k=20&c=PYrX52dwBxVIjys1S5M8T1BviEVxcZmMUwGa89BTQZw="},
+{Category:"Home Gadgets",Title:"Hands-free clean while you’re out",Description:"Set-and-forget vacuuming with smart mapping, edge cleaning, and auto-dock charging.",AmazonLink:"https://amzn.to/4m1DOm8",PriceNote:"Top seller · Multi-room mapping",ImageURL:"https://static.vecteezy.com/system/resources/thumbnails/032/473/849/small_2x/robotic-vacuum-cleaner-on-laminate-wood-floor-modern-smart-cleaning-technology-ai-generative-photo.jpg"},
+{Category:"Home Gadgets",Title:"Cinematic glow for your TV",Description:"Bias lighting reduces eye strain and makes colors pop. Peel, stick, and plug in.",AmazonLink:"https://amzn.to/4palYQJ",PriceNote:"Easy install · Remote included",ImageURL:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDg0..."},
+{Category:"Home Gadgets",Title:"Breathe better in every room",Description:"HEPA filtration captures dust, pollen, and pet dander — perfect for bedrooms and studios.",AmazonLink:"https://amzn.to/4gg2NRs",PriceNote:"Whisper-quiet · Replaceable filters",ImageURL:"https://m.media-amazon.com/images/I/81iQAl1cfSL._AC_SL1500_.jpg"},
+{Category:"Gaming Essentials",Title:"Type faster. Win faster.",Description:"Hot-swappable mechanical switches and anti-ghosting for crisp taps and clutch plays.",AmazonLink:"https://amzn.to/4mKeeDi",PriceNote:"RGB · Swappable switches",ImageURL:"https://m.media-amazon.com/images/I/618A+B25MKL._AC_SL1500_.jpg"},
+{Category:"Gaming Essentials",Title:"Pixel-perfect precision",Description:"Lightweight sensor mouse with on-the-fly DPI and buttery-smooth glides.",AmazonLink:"https://amzn.to/466NN3B",PriceNote:"Ultra-light · On-board memory",ImageURL:"https://m.media-amazon.com/images/I/61mpMH5TzkL._AC_SL1500_.jpg"},
+{Category:"Gaming Essentials",Title:"Footsteps you can actually hear",Description:"Comfortable over-ears with clear chat and spatial audio for competitive awareness.",AmazonLink:"https://amzn.to/4m3PwN5",PriceNote:"Detachable mic · Memory foam",ImageURL:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1200&auto=format&fit=crop"},
+{Category:"Gaming Essentials",Title:"Sound pro on streams & calls",Description:"Plug-and-play USB mic with cardioid pickup — no mixer or drivers required.",AmazonLink:"https://amzn.to/45SHrGn",PriceNote:"Shock mount · Pop filter",ImageURL:"https://m.media-amazon.com/images/I/61u4FYXctPL._AC_SL1200_.jpg"},
+{Category:"Desk Setup",Title:"Eye-level monitor, clean desk",Description:"Lift your screen, stash your keyboard, and unlock instant posture points.",AmazonLink:"https://amzn.to/468USk2",PriceNote:"Wood & metal options",ImageURL:"https://m.media-amazon.com/images/I/51kULJHh4BL._AC_SL1500_.jpg"},
+{Category:"Desk Setup",Title:"One pad, all charged",Description:"Drop your phone and earbuds on a single wireless pad — fewer cables, more focus.",AmazonLink:"https://amzn.to/4niuf3a",PriceNote:"MagSafe-ready · Fast charge",ImageURL:"https://m.media-amazon.com/images/I/6101j7BOSLL._AC_SL1500_.jpg"},
+{Category:"Desk Setup",Title:"The desk mat upgrade",Description:"A smooth, oversized surface that keeps gear steady and your setup cohesive.",AmazonLink:"https://amzn.to/4m6PYdj",PriceNote:"Water-resistant · Non-slip",ImageURL:"https://m.media-amazon.com/images/I/71MVulxNSWL._AC_SL1500_.jpg"},
+{Category:"Smart Home",Title:"Control your home with your voice",Description:"Smart speaker with Alexa lets you play music, control smart devices, and get info hands-free.",AmazonLink:"https://amzn.to/3JHk1bX",PriceNote:"Far-field voice recognition",ImageURL:"https://m.media-amazon.com/images/I/61bA0fjrSXL._AC_SL1500_.jpg"},
+{Category:"Smart Home",Title:"See who’s there from anywhere",Description:"Video doorbell with motion detection, two-way talk, and night vision.",AmazonLink:"https://amzn.to/45ZT0vu",PriceNote:"1080p HD · Works with Alexa",ImageURL:"https://m.media-amazon.com/images/I/61ZQ3+1WI8L._AC_SL1500_.jpg"},
+{Category:"Smart Home",Title:"Set the mood with a tap",Description:"Smart light bulbs with millions of colors and shades of white, controllable via app or voice.",AmazonLink:"https://amzn.to/3V9nPYc",PriceNote:"Works with Alexa & Google",ImageURL:"https://m.media-amazon.com/images/I/610pDnVRosL._AC_SL1500_.jpg"},
+{Category:"Lifestyle",Title:"Stay hydrated in style",Description:"Insulated stainless steel water bottle keeps drinks cold for 24 hours or hot for 12 hours.",AmazonLink:"https://amzn.to/47AHLuD",PriceNote:"Sweat-proof · BPA-free",ImageURL:"https://m.media-amazon.com/images/I/61Y-CnKRxML._AC_SL1500_.jpg"},
+{Category:"Lifestyle",Title:"Ultimate comfort for all-day wear",Description:"Ergonomic sneakers with breathable mesh and cushioned soles for maximum comfort.",AmazonLink:"https://amzn.to/4njnNsF",PriceNote:"Lightweight · Arch support",ImageURL:"https://m.media-amazon.com/images/I/71Ie4rSPhTL._AC_SY695_.jpg"},
+{Category:"Lifestyle",Title:"Powerful 4k camera in your pocket",Description:"Capture stunning photos and videos anywhere with advanced stabilization and instant sharing.",AmazonLink:"https://amzn.to/46tIRai",PriceNote:"4K video · Pocket-sized",ImageURL:"https://m.media-amazon.com/images/I/61uoYmbM9RL._AC_SL1500_.jpg"},
+{Category:"Travel",Title:"Organize your essentials",Description:"Durable toiletry bag with multiple compartments and waterproof lining for easy packing.",AmazonLink:"https://amzn.to/3V9TBUX",PriceNote:"Compact · Water-resistant",ImageURL:"https://m.media-amazon.com/images/I/91vh3Z-TauL._AC_SX679_.jpg"},
+{Category:"Travel",Title:"Noise-canceling for travel",Description:"Over-ear headphones with active noise cancellation and long battery life for uninterrupted listening.",AmazonLink:"https://amzn.to/4mPjBRG",PriceNote:"ANC · 30-hour battery",ImageURL:"https://m.media-amazon.com/images/I/610NdWdTLiL._AC_SL1500_.jpg"},
+{Category:"Travel",Title:"Compact power on the go",Description:"Portable charger with high-capacity battery and multiple USB ports for charging devices anywhere.",AmazonLink:"https://amzn.to/4gevs9o",PriceNote:"20,000mAh · Fast charge",ImageURL:"https://m.media-amazon.com/images/I/61RsRGUZORL._AC_SL1500_.jpg"},
+{Category:"Outdoors",Title:"Adventure-ready gear",Description:"Lightweight and durable backpack with multiple compartments and hydration bladder compatibility.",AmazonLink:"https://amzn.to/3IfnNLt",PriceNote:"Water-resistant · 20L capacity",ImageURL:"https://m.media-amazon.com/images/I/61eiZt4fmaL._AC_SL1200_.jpg"},
+{Category:"Outdoors",Title:"Stay warm and dry",Description:"Waterproof and insulated jacket with breathable fabric and adjustable hood for all-weather protection.",AmazonLink:"https://amzn.to/4m4WnGd",PriceNote:"Waterproof · Insulated",ImageURL:"https://m.media-amazon.com/images/I/81wTXql4fqL._AC_SX679_.jpg"},
+{Category:"Outdoors",Title:"Camping made easy",Description:"Compact and lightweight tent with easy setup and weather-resistant materials for outdoor adventures.",AmazonLink:"https://amzn.to/3HTYsqu",PriceNote:"2-person · Easy setup",ImageURL:"https://m.media-amazon.com/images/I/51FhbYn+e3L._AC_SL1500_.jpg"}
+];
 
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/81iQAl1cfSL._AC_SL1500_.jpg"
-                 alt="Compact air purifier on a side table">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Breathe better in every room</h3>
-            <p class="desc">HEPA filtration captures dust, pollen, and pet dander — perfect for bedrooms and studios.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4gg2NRs" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Whisper-quiet · Replaceable filters</span>
-          </div>
-        </article>
+// ================== Render Categories ==================
+const categories = [...new Set(products.map(p=>p.Category))];
+const categoriesDiv = document.getElementById('categories');
+categoriesDiv.innerHTML = `<button class="active" data-cat="All">All</button>` + categories.map(cat=>`<button data-cat="${cat}">${cat}</button>`).join('');
+const buttons = document.querySelectorAll('#categories button');
+buttons.forEach(btn => {
+    btn.addEventListener('click',()=> {
+        buttons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProducts(btn.dataset.cat);
+    });
+});
 
-      </div>
-    </section>
+// ================== Render Products ==================
+const productsDiv = document.getElementById('products');
+function renderProducts(category="All",search=""){
+    let filtered = products.filter(p => 
+        (category==="All"||p.Category===category) && 
+        (p.Title.toLowerCase().includes(search.toLowerCase()) || p.Description.toLowerCase().includes(search.toLowerCase()))
+    );
+    productsDiv.innerHTML = filtered.map(p=>`
+        <div class="product-card">
+            <img src="${p.ImageURL}" alt="${p.Title}">
+            <div class="product-info">
+                <h3>${p.Title}</h3>
+                <p>${p.Description}</p>
+                <div class="price">${p.PriceNote}</div>
+                <a href="${p.AmazonLink}" target="_blank" class="buy-button">Buy Now</a>
+            </div>
+        </div>
+    `).join('');
+}
 
-    <!-- =========================================================
-         CATEGORY 2: GAMING ESSENTIALS
-         ========================================================= -->
-    <section id="gaming-essentials" class="category" aria-labelledby="gaming-essentials-title">
-      <div class="section-head">
-        <h2 id="gaming-essentials-title">Gaming Essentials</h2>
-        <span class="pill">Lock in better sessions</span>
-      </div>
-      <div class="grid">
+// ================== Search ==================
+document.getElementById('search').addEventListener('input',e=>{
+    const category = document.querySelector('#categories button.active').dataset.cat;
+    renderProducts(category,e.target.value);
+});
 
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/618A+B25MKL._AC_SL1500_.jpg"
-                 alt="Mechanical keyboard with RGB lighting">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Type faster. Win faster.</h3>
-            <p class="desc">Hot-swappable mechanical switches and anti-ghosting for crisp taps and clutch plays.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4mKeeDi" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">RGB · Swappable switches</span>
-          </div>
-        </article>
+// ================== Initial Render ==================
+renderProducts();
+</script>
 
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/61mpMH5TzkL._AC_SL1500_.jpg"
-                 alt="Ergonomic gaming mouse on mousepad">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Pixel-perfect precision</h3>
-            <p class="desc">Lightweight sensor mouse with on-the-fly DPI and buttery-smooth glides.</p>
-            <a class="btn btn-primary" href="https://amzn.to/466NN3B" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Ultra-light · On-board memory</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1200&auto=format&fit=crop"
-                 alt="Over-ear gaming headset on desk">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Footsteps you can actually hear</h3>
-            <p class="desc">Comfortable over-ears with clear chat and spatial audio for competitive awareness.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4m3PwN5" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Detachable mic · Memory foam</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/61u4FYXctPL._AC_SL1200_.jpg"
-                 alt="USB microphone on boom arm">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Sound pro on streams & calls</h3>
-            <p class="desc">Plug-and-play USB mic with cardioid pickup — no mixer or drivers required.</p>
-            <a class="btn btn-primary" href="https://amzn.to/45SHrGn" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Shock mount · Pop filter</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- =========================================================
-         CATEGORY 3: DESK SETUP
-         ========================================================= -->
-    <section id="desk-setup" class="category" aria-labelledby="desk-setup-title">
-      <div class="section-head">
-        <h2 id="desk-setup-title">Desk Setup</h2>
-        <span class="pill">Work smarter in style</span>
-      </div>
-      <div class="grid">
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/51kULJHh4BL._AC_SL1500_.jpg"
-                 alt="Minimalist monitor stand with accessories">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Eye-level monitor, clean desk</h3>
-            <p class="desc">Lift your screen, stash your keyboard, and unlock instant posture points.</p>
-            <a class="btn btn-primary" href="https://amzn.to/468USk2" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Wood & metal options</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/6101j7BOSLL._AC_SL1500_.jpg"
-                 alt="Dual device wireless charger on desk">
-          </a>
-          <div class="card-body">
-            <h3 class="title">One pad, all charged</h3>
-            <p class="desc">Drop your phone and earbuds on a single wireless pad — fewer cables, more focus.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4niuf3a" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">MagSafe-ready · Fast charge</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/71MVulxNSWL._AC_SL1500_.jpg"
-                 alt="Large desk mat with keyboard and mouse">
-          </a>
-          <div class="card-body">
-            <h3 class="title">The desk mat upgrade</h3>
-            <p class="desc">A smooth, oversized surface that keeps gear steady and your setup cohesive.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4m6PYdj" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Water-resistant · Non-slip</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/71r9DAN6ITL._AC_SL1500_.jpg"
-                 alt="Adjustable desk lamp with warm light">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Lighting that saves your eyes</h3>
-            <p class="desc">Adjustable color temperature and dimming to reduce fatigue late into study sessions.</p>
-            <a class="btn btn-primary" href="#" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">USB-C · Auto-dimming</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- =========================================================
-         CATEGORY 4: DORM MUST-HAVES
-         ========================================================= -->
-    <section id="dorm-must-haves" class="category" aria-labelledby="dorm-title">
-      <div class="section-head">
-        <h2 id="dorm-title">Dorm Room Must-Haves</h2>
-        <span class="pill">Small space, big comfort</span>
-      </div>
-      <div class="grid">
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/71r9DAN6ITL._AC_SL1500_.jpg"
-                 alt="Under-bed storage boxes neatly stacked">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Hidden storage in seconds</h3>
-            <p class="desc">Slide-out bins keep clothes and snacks organized without eating floor space.</p>
-            <a class="btn btn-primary" href="https://amzn.to/3JRIa1O" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Stackable · Zip covers</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/51LfO2+Kn9L._AC_SL1500_.jpg"
-                 alt="Power strip with USB ports on a desk">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Charge everything from one strip</h3>
-            <p class="desc">Surge protection plus USB-A/C means laptops, phones, and tablets all plug in easily.</p>
-            <a class="btn btn-primary" href="https://amzn.to/46lCmGB" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Dorm-safe · Flat plug</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/61DzuuxIMNL._AC_SL1500_.jpg"
-                 alt="Compact coffee maker on a small shelf">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Coffee in 3 minutes, zero mess</h3>
-            <p class="desc">Single-serve brewer fits tiny counters so you’re alert for morning classes.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4mQBnUL" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Auto-off · Reusable filter</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="#">
-            <img loading="lazy" decoding="async" width="800" height="500"
-                 src="https://m.media-amazon.com/images/I/81VVMnTq4aL._AC_SL1500_.jpg"
-                 alt="Cozy bedding set on dorm bed">
-          </a>
-          <div class="card-body">
-            <h3 class="title">Upgrade to hotel-level cozy</h3>
-            <p class="desc">Soft microfiber sheets and a breathable comforter = better sleep, better grades.</p>
-            <a class="btn btn-primary" href="https://amzn.to/4nhfdL3" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a>
-            <span class="price-note">Twin XL · Easy care</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- ============== Footer ============== -->
-  <footer class="container" role="contentinfo">
-    <p>Disclosure: As an Amazon Associate I earn from qualifying purchases.</p>
-    <p class="pill">© <span id="year"></span> August’s Amazon Finds</p>
-  </footer>
-
-  <noscript>
-    Faster is great—JavaScript is optional here. You’re seeing the basic version without active nav highlighting.
-  </noscript>
-
-  <script>
-    // Update copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- =========================================================
-       QUICK EDIT GUIDE (for beginners)
-       1) Replace each product card's <img src="..."> with your image URL.
-       2) Change each <h3> and <p class="desc"> to your own copy.
-       3) Put your Amazon affiliate link in each <a class="btn btn-primary" href="#">.
-       4) Add or remove cards by duplicating an <article class="card"> block.
-       5) Add new categories by duplicating a full <section class="category">.
-       6) GitHub Pages: name this file index.html in a repo and enable Pages.
-       ========================================================= -->
 </body>
 </html>
