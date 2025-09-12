@@ -1,75 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fitness Gear | Nitish’s Picks</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Gear Essentials</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Same styling as index.html */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', sans-serif; background:#f5f7fb; color:#1f2937; line-height:1.6; }
+
+header { padding:2rem 1rem; text-align:center; background:linear-gradient(135deg,#4f46e5,#6366f1); color:#fff; }
+header h1 { font-size:2.5rem; margin-bottom:0.5rem; font-weight:700; }
+header p { font-size:1.2rem; color:rgba(255,255,255,0.85); }
+
+#products { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; padding:2rem 1rem 3rem; }
+.product-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.15); }
+.product-card img { width:100%; height:220px; object-fit:cover; transition:transform 0.3s; }
+.product-card img:hover { transform:scale(1.05); }
+.product-info { padding:1rem; display:flex; flex-direction:column; flex:1; }
+.product-info h3 { font-size:1.25rem; margin-bottom:0.5rem; color:#1e293b; font-weight:600; }
+.product-info p { flex:1; font-size:0.95rem; margin-bottom:1rem; color:#475569; }
+.price { font-weight:700; color:#4f46e5; margin-bottom:0.5rem; }
+.buy-button { display:inline-block; text-align:center; padding:0.75rem 1rem; background:#4f46e5; color:#fff; font-weight:600; border-radius:12px; transition:all 0.3s; text-decoration:none; }
+.buy-button:hover { background:#6366f1; transform:scale(1.05); }
+
+footer { text-align:center; padding:2rem 1rem; background:#1f2937; color:#fff; font-size:0.9rem; }
+
+@media(max-width:768px){ header h1{font-size:2rem;} }
+@media(max-width:480px){ .product-card img{height:180px;} header h1{font-size:1.8rem;} }
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- Header -->
-  <header class="bg-green-700 text-white p-6 shadow-md">
-    <h1 class="text-3xl font-bold">Fitness Gear</h1>
-    <p class="mt-2">Build strength, stay active, and feel your best.</p>
-  </header>
+<body>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto p-6">
-    <!-- Intro -->
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Why Fitness Gear Matters</h2>
-      <p class="mb-4">
-        Staying healthy isn’t just about motivation—it’s also about having the right tools. 
-        The right gear can help you train effectively, reduce injury, and stay consistent with your workouts. 
-      </p>
-      <p>
-        Investing in quality equipment makes fitness more enjoyable and helps you achieve results faster. 
-        If you want to stay on track with your health goals, these essentials are a must.
-      </p>
-    </section>
+<header>
+<h1>Fitness Gear Essentials</h1>
+<p>Top equipment and accessories to elevate your workouts and track your progress.</p>
+</header>
 
-    <!-- Essentials List -->
-    <section class="grid gap-8">
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Adjustable Dumbbells</h3>
-        <p class="mb-3">
-          Save space and money with dumbbells that can be adjusted for different weights. 
-          Perfect for strength training at home without needing an entire rack.
-        </p>
-        <a href="#" class="text-green-600 font-medium hover:underline">See top picks →</a>
-      </article>
+<div id="products"></div>
 
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Resistance Bands</h3>
-        <p class="mb-3">
-          Lightweight, versatile, and portable—resistance bands are excellent for strength, flexibility, and rehabilitation exercises. 
-          A must-have for any fitness routine.
-        </p>
-        <a href="#" class="text-green-600 font-medium hover:underline">See recommendations →</a>
-      </article>
+<footer>
+<p>&copy; 2025 Ultimate Product Showcase. All rights reserved. | <a href="index.html" style="color:#a5b4fc;">Back to Home</a></p>
+</footer>
 
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Yoga Mat</h3>
-        <p class="mb-3">
-          Whether you’re stretching, lifting, or meditating, a quality yoga mat provides comfort and stability. 
-          It’s the foundation of every good workout space.
-        </p>
-        <a href="#" class="text-green-600 font-medium hover:underline">Browse options →</a>
-      </article>
+<script>
+// Fitness Gear product data
+const products = [
+  {Category:"Fitness Gear",Title:"Adjustable Dumbbells Set",Description:"Compact adjustable dumbbells replace multiple weights and save space in your home gym.",AmazonLink:"https://amzn.to/4fitness1",PriceNote:"5–50 lbs · Easy adjust",ImageURL:"https://m.media-amazon.com/images/I/71JtVnE2+6L._AC_SL1500_.jpg"},
+  {Category:"Fitness Gear",Title:"Premium Yoga Mat",Description:"Non-slip, extra-thick mat for yoga, stretching, and core exercises.",AmazonLink:"https://amzn.to/4fitness2",PriceNote:"72in · Eco-friendly",ImageURL:"https://m.media-amazon.com/images/I/81Z8j5t+ZHL._AC_SL1500_.jpg"},
+  {Category:"Fitness Gear",Title:"Resistance Bands Set",Description:"Durable resistance bands for strength training, mobility, and rehab exercises.",AmazonLink:"https://amzn.to/4fitness3",PriceNote:"5 levels · Portable",ImageURL:"https://m.media-amazon.com/images/I/71d5JkWBB7L._AC_SL1500_.jpg"},
+  {Category:"Fitness Gear",Title:"Adjustable Pull-up Bar",Description:"Mounts securely in doorway for pull-ups, chin-ups, and hanging exercises.",AmazonLink:"https://amzn.to/4fitness4",PriceNote:"Weight up to 300 lbs",ImageURL:"https://m.media-amazon.com/images/I/61N9k61hGCL._AC_SL1200_.jpg"},
+  {Category:"Fitness Gear",Title:"Smart Fitness Watch",Description:"Tracks heart rate, sleep, and workouts to help you reach your fitness goals.",AmazonLink:"https://amzn.to/4fitness5",PriceNote:"Water-resistant · GPS",ImageURL:"https://m.media-amazon.com/images/I/71Fp6fh+9kL._AC_SL1500_.jpg"}
+];
 
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Foam Roller</h3>
-        <p class="mb-3">
-          Recovery is just as important as training. A foam roller helps relieve sore muscles, improve mobility, and keep your body in top condition.
-        </p>
-        <a href="#" class="text-green-600 font-medium hover:underline">Check deals →</a>
-      </article>
-    </section>
-  </main>
+const productsDiv = document.getElementById('products');
+productsDiv.innerHTML = products.map(p=>`
+  <div class="product-card">
+    <img src="${p.ImageURL}" alt="${p.Title}">
+    <div class="product-info">
+      <h3>${p.Title}</h3>
+      <p>${p.Description}</p>
+      <div class="price">${p.PriceNote}</div>
+      <a href="${p.AmazonLink}" target="_blank" class="buy-button">Buy Now</a>
+    </div>
+  </div>
+`).join('');
+</script>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white text-center p-4 mt-10">
-    <p>© 2025 Nitish’s Picks – Fitness Gear</p>
-  </footer>
 </body>
 </html>
