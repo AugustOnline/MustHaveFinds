@@ -6,135 +6,184 @@
 <title>Ultimate Product Showcase</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Reset and body */
+/* ===== Reset ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Inter', sans-serif; background:#f5f7fb; color:#1f2937; line-height:1.6; }
+a { text-decoration:none; color:inherit; }
 
-/* Header */
-header { padding:2rem 1rem; text-align:center; background:linear-gradient(135deg,#4f46e5,#6366f1); color:#fff; }
-header h1 { font-size:2.5rem; margin-bottom:0.5rem; font-weight:700; }
-header p { font-size:1.2rem; color:rgba(255,255,255,0.85); }
+/* ===== Header ===== */
+header { background:linear-gradient(135deg,#4f46e5,#6366f1); color:#fff; padding:3rem 1rem; text-align:center; position:relative; }
+header h1 { font-size:3rem; font-weight:700; margin-bottom:0.5rem; }
+header p { font-size:1.25rem; color:rgba(255,255,255,0.9); margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto; }
 
-/* Search */
+/* ===== Navigation ===== */
+nav { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; }
+nav a { padding:0.75rem 1.5rem; border-radius:12px; background:rgba(255,255,255,0.2); color:#fff; font-weight:600; transition:0.3s; }
+nav a:hover { background:#fff; color:#4f46e5; transform:scale(1.05); }
+
+/* ===== Search ===== */
 #search-container { display:flex; justify-content:center; margin:2rem 1rem; }
 #search { width:100%; max-width:500px; padding:0.75rem 1rem; border-radius:12px; border:1px solid #ddd; font-size:1rem; transition:all 0.3s; }
 #search:focus { outline:none; border-color:#4f46e5; box-shadow:0 4px 12px rgba(79,70,229,0.2); }
 
-/* Categories */
-#categories { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:2rem; }
-#categories button { padding:0.6rem 1.2rem; border:none; border-radius:8px; font-weight:600; background:#e0e7ff; color:#4f46e5; transition:all 0.3s; cursor:pointer; }
-#categories button:hover { background:#4f46e5; color:#fff; transform:scale(1.05); }
-#categories button.active { background:#4f46e5; color:#fff; }
+/* ===== Featured Section ===== */
+#featured { padding:3rem 1rem; }
+#featured h2 { font-size:2rem; font-weight:700; margin-bottom:1.5rem; text-align:center; color:#1e293b; }
+.featured-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; }
+.featured-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); transition:transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; }
+.featured-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.15); }
+.featured-card img { width:100%; height:220px; object-fit:cover; transition:transform 0.3s; }
+.featured-card img:hover { transform:scale(1.05); }
+.featured-card .info { padding:1rem; flex:1; display:flex; flex-direction:column; }
+.featured-card .info h3 { font-size:1.25rem; margin-bottom:0.5rem; font-weight:600; color:#1e293b; }
+.featured-card .info p { flex:1; font-size:0.95rem; margin-bottom:1rem; color:#475569; }
+.featured-card .price { font-weight:700; color:#4f46e5; margin-bottom:0.5rem; }
+.featured-card .buy-button { display:inline-block; text-align:center; padding:0.75rem 1rem; background:#4f46e5; color:#fff; font-weight:600; border-radius:12px; transition:all 0.3s; }
+.featured-card .buy-button:hover { background:#6366f1; transform:scale(1.05); }
 
-/* Products Grid */
-#products { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; padding:0 1rem 3rem; }
-.product-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; }
-.product-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.15); }
-.product-card img { width:100%; height:220px; object-fit:cover; transition:transform 0.3s; }
-.product-card img:hover { transform:scale(1.05); }
-.product-info { padding:1rem; display:flex; flex-direction:column; flex:1; }
-.product-info h3 { font-size:1.25rem; margin-bottom:0.5rem; color:#1e293b; font-weight:600; }
-.product-info p { flex:1; font-size:0.95rem; margin-bottom:1rem; color:#475569; }
-.price { font-weight:700; color:#4f46e5; margin-bottom:0.5rem; }
-.buy-button { display:inline-block; text-align:center; padding:0.75rem 1rem; background:#4f46e5; color:#fff; font-weight:600; border-radius:12px; transition:all 0.3s; text-decoration:none; }
-.buy-button:hover { background:#6366f1; transform:scale(1.05); }
+/* ===== Categories Grid ===== */
+#categories-section { padding:3rem 1rem; background:#eef2ff; }
+#categories-section h2 { font-size:2rem; font-weight:700; margin-bottom:2rem; text-align:center; color:#1e293b; }
+.categories-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; }
+.category-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); text-align:center; padding:2rem 1rem; transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.category-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.15); }
+.category-card img { width:80px; height:80px; object-fit:contain; margin-bottom:1rem; }
+.category-card h3 { font-size:1.2rem; font-weight:600; color:#1e293b; }
 
-/* Footer */
-footer { text-align:center; padding:2rem 1rem; background:#1f2937; color:#fff; font-size:0.9rem; }
+/* ===== Footer ===== */
+footer { text-align:center; padding:3rem 1rem; background:#1f2937; color:#fff; font-size:0.9rem; }
+footer a { color:#a5b4fc; }
+footer a:hover { text-decoration:underline; }
 
-/* Responsive */
-@media(max-width:768px){ header h1{font-size:2rem;} #search{max-width:100%;} }
-@media(max-width:480px){ .product-card img{height:180px;} header h1{font-size:1.8rem;} }
+/* ===== Responsive ===== */
+@media(max-width:768px){ header h1{font-size:2.5rem;} #search{max-width:100%;} }
+@media(max-width:480px){ .featured-card img{height:180px;} header h1{font-size:2rem;} }
 </style>
 </head>
 <body>
 
 <header>
 <h1>Ultimate Product Showcase</h1>
-<p>Discover top gadgets, home essentials, gaming gear, and lifestyle products</p>
+<p>Discover top gadgets, kitchen must-haves, gaming essentials, travel gear, home gadgets, and fitness equipment</p>
+<nav>
+<a href="home-gadgets.html">Home Gadgets</a>
+<a href="kitchen-must-haves.html">Kitchen Must-Haves</a>
+<a href="gaming-essentials.html">Gaming Essentials</a>
+<a href="travel-gear.html">Travel Gear</a>
+<a href="fitness-gear.html">Fitness Gear</a>
+</nav>
 </header>
 
 <div id="search-container">
 <input type="text" id="search" placeholder="Search products...">
 </div>
 
-<div id="categories"></div>
+<section id="featured">
+<h2>Featured Products</h2>
+<div class="featured-grid">
+<div class="featured-card">
+<img src="https://m.media-amazon.com/images/I/71JtVnE2+6L._AC_SL1500_.jpg" alt="Adjustable Dumbbells">
+<div class="info">
+<h3>Adjustable Dumbbells Set</h3>
+<p>Compact adjustable dumbbells replace multiple weights and save space in your home gym.</p>
+<div class="price">5–50 lbs · Easy adjust</div>
+<a href="https://amzn.to/4fitness1" target="_blank" class="buy-button">Buy Now</a>
+</div>
+</div>
 
-<div id="products"></div>
+<div class="featured-card">
+<img src="https://m.media-amazon.com/images/I/81Z8j5t+ZHL._AC_SL1500_.jpg" alt="Premium Yoga Mat">
+<div class="info">
+<h3>Premium Yoga Mat</h3>
+<p>Non-slip, extra-thick mat for yoga, stretching, and core exercises.</p>
+<div class="price">72in · Eco-friendly</div>
+<a href="https://amzn.to/4fitness2" target="_blank" class="buy-button">Buy Now</a>
+</div>
+</div>
+
+<div class="featured-card">
+<img src="https://m.media-amazon.com/images/I/618A+B25MKL._AC_SL1500_.jpg" alt="Mechanical Keyboard">
+<div class="info">
+<h3>Hot-Swappable Mechanical Keyboard</h3>
+<p>Type faster and win faster with customizable mechanical switches and anti-ghosting technology.</p>
+<div class="price">RGB · Swappable switches</div>
+<a href="https://amzn.to/4mKeeDi" target="_blank" class="buy-button">Buy Now</a>
+</div>
+</div>
+
+<div class="featured-card">
+<img src="https://m.media-amazon.com/images/I/91vh3Z-TauL._AC_SX679_.jpg" alt="Travel Toiletry Bag">
+<div class="info">
+<h3>Durable Travel Toiletry Bag</h3>
+<p>Organize your essentials with multiple compartments and waterproof lining for easy packing.</p>
+<div class="price">Compact · Water-resistant</div>
+<a href="https://amzn.to/3V9TBUX" target="_blank" class="buy-button">Buy Now</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="categories-section">
+<h2>Explore Categories</h2>
+<div class="categories-grid">
+<div class="category-card" onclick="window.location.href='home-gadgets.html'">
+<img src="https://media.istockphoto.com/id/614868562/vector/american-socket.jpg" alt="Home Gadgets">
+<h3>Home Gadgets</h3>
+</div>
+
+<div class="category-card" onclick="window.location.href='kitchen-must-haves.html'">
+<img src="https://m.media-amazon.com/images/I/71vY+O3niQL._AC_SL1500_.jpg" alt="Kitchen Must-Haves">
+<h3>Kitchen Must-Haves</h3>
+</div>
+
+<div class="category-card" onclick="window.location.href='gaming-essentials.html'">
+<img src="https://m.media-amazon.com/images/I/618A+B25MKL._AC_SL1500_.jpg" alt="Gaming Essentials">
+<h3>Gaming Essentials</h3>
+</div>
+
+<div class="category-card" onclick="window.location.href='travel-gear.html'">
+<img src="https://m.media-amazon.com/images/I/91vh3Z-TauL._AC_SX679_.jpg" alt="Travel Gear">
+<h3>Travel Gear</h3>
+</div>
+
+<div class="category-card" onclick="window.location.href='fitness-gear.html'">
+<img src="https://m.media-amazon.com/images/I/71JtVnE2+6L._AC_SL1500_.jpg" alt="Fitness Gear">
+<h3>Fitness Gear</h3>
+</div>
+</div>
+</section>
 
 <footer>
 <p>&copy; 2025 Ultimate Product Showcase. All rights reserved.</p>
+<p><a href="index.html">Home</a> | <a href="home-gadgets.html">Home Gadgets</a> | <a href="kitchen-must-haves.html">Kitchen</a> | <a href="gaming-essentials.html">Gaming</a> | <a href="travel-gear.html">Travel</a> | <a href="fitness-gear.html">Fitness</a></p>
 </footer>
 
 <script>
-// ================== Product Data ==================
+// ================== Search Function ==================
 const products = [
-{Category:"Home Gadgets",Title:"Make any outlet smart in 60 seconds",Description:"Instant voice + app control for lamps, fans, and more — no hub required and setup is a breeze.",AmazonLink:"https://amzn.to/42bKOpm",PriceNote:"Prime eligible · Usually under $25",ImageURL:"https://media.istockphoto.com/id/614868562/vector/american-socket.jpg?s=612x612&w=0&k=20&c=PYrX52dwBxVIjys1S5M8T1BviEVxcZmMUwGa89BTQZw="},
-{Category:"Home Gadgets",Title:"Hands-free clean while you’re out",Description:"Set-and-forget vacuuming with smart mapping, edge cleaning, and auto-dock charging.",AmazonLink:"https://amzn.to/4m1DOm8",PriceNote:"Top seller · Multi-room mapping",ImageURL:"https://static.vecteezy.com/system/resources/thumbnails/032/473/849/small_2x/robotic-vacuum-cleaner-on-laminate-wood-floor-modern-smart-cleaning-technology-ai-generative-photo.jpg"},
-{Category:"Home Gadgets",Title:"Cinematic glow for your TV",Description:"Bias lighting reduces eye strain and makes colors pop. Peel, stick, and plug in.",AmazonLink:"https://amzn.to/4palYQJ",PriceNote:"Easy install · Remote included",ImageURL:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDg0..."},
-{Category:"Home Gadgets",Title:"Breathe better in every room",Description:"HEPA filtration captures dust, pollen, and pet dander — perfect for bedrooms and studios.",AmazonLink:"https://amzn.to/4gg2NRs",PriceNote:"Whisper-quiet · Replaceable filters",ImageURL:"https://m.media-amazon.com/images/I/81iQAl1cfSL._AC_SL1500_.jpg"},
-{Category:"Gaming Essentials",Title:"Type faster. Win faster.",Description:"Hot-swappable mechanical switches and anti-ghosting for crisp taps and clutch plays.",AmazonLink:"https://amzn.to/4mKeeDi",PriceNote:"RGB · Swappable switches",ImageURL:"https://m.media-amazon.com/images/I/618A+B25MKL._AC_SL1500_.jpg"},
-{Category:"Gaming Essentials",Title:"Pixel-perfect precision",Description:"Lightweight sensor mouse with on-the-fly DPI and buttery-smooth glides.",AmazonLink:"https://amzn.to/466NN3B",PriceNote:"Ultra-light · On-board memory",ImageURL:"https://m.media-amazon.com/images/I/61mpMH5TzkL._AC_SL1500_.jpg"},
-{Category:"Gaming Essentials",Title:"Footsteps you can actually hear",Description:"Comfortable over-ears with clear chat and spatial audio for competitive awareness.",AmazonLink:"https://amzn.to/4m3PwN5",PriceNote:"Detachable mic · Memory foam",ImageURL:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1200&auto=format&fit=crop"},
-{Category:"Gaming Essentials",Title:"Sound pro on streams & calls",Description:"Plug-and-play USB mic with cardioid pickup — no mixer or drivers required.",AmazonLink:"https://amzn.to/45SHrGn",PriceNote:"Shock mount · Pop filter",ImageURL:"https://m.media-amazon.com/images/I/61u4FYXctPL._AC_SL1200_.jpg"},
-{Category:"Desk Setup",Title:"Eye-level monitor, clean desk",Description:"Lift your screen, stash your keyboard, and unlock instant posture points.",AmazonLink:"https://amzn.to/468USk2",PriceNote:"Wood & metal options",ImageURL:"https://m.media-amazon.com/images/I/51kULJHh4BL._AC_SL1500_.jpg"},
-{Category:"Desk Setup",Title:"One pad, all charged",Description:"Drop your phone and earbuds on a single wireless pad — fewer cables, more focus.",AmazonLink:"https://amzn.to/4niuf3a",PriceNote:"MagSafe-ready · Fast charge",ImageURL:"https://m.media-amazon.com/images/I/6101j7BOSLL._AC_SL1500_.jpg"},
-{Category:"Desk Setup",Title:"The desk mat upgrade",Description:"A smooth, oversized surface that keeps gear steady and your setup cohesive.",AmazonLink:"https://amzn.to/4m6PYdj",PriceNote:"Water-resistant · Non-slip",ImageURL:"https://m.media-amazon.com/images/I/71MVulxNSWL._AC_SL1500_.jpg"},
-{Category:"Smart Home",Title:"Control your home with your voice",Description:"Smart speaker with Alexa lets you play music, control smart devices, and get info hands-free.",AmazonLink:"https://amzn.to/3JHk1bX",PriceNote:"Far-field voice recognition",ImageURL:"https://m.media-amazon.com/images/I/61bA0fjrSXL._AC_SL1500_.jpg"},
-{Category:"Smart Home",Title:"See who’s there from anywhere",Description:"Video doorbell with motion detection, two-way talk, and night vision.",AmazonLink:"https://amzn.to/45ZT0vu",PriceNote:"1080p HD · Works with Alexa",ImageURL:"https://m.media-amazon.com/images/I/61ZQ3+1WI8L._AC_SL1500_.jpg"},
-{Category:"Smart Home",Title:"Set the mood with a tap",Description:"Smart light bulbs with millions of colors and shades of white, controllable via app or voice.",AmazonLink:"https://amzn.to/3V9nPYc",PriceNote:"Works with Alexa & Google",ImageURL:"https://m.media-amazon.com/images/I/610pDnVRosL._AC_SL1500_.jpg"},
-{Category:"Lifestyle",Title:"Stay hydrated in style",Description:"Insulated stainless steel water bottle keeps drinks cold for 24 hours or hot for 12 hours.",AmazonLink:"https://amzn.to/47AHLuD",PriceNote:"Sweat-proof · BPA-free",ImageURL:"https://m.media-amazon.com/images/I/61Y-CnKRxML._AC_SL1500_.jpg"},
-{Category:"Lifestyle",Title:"Ultimate comfort for all-day wear",Description:"Ergonomic sneakers with breathable mesh and cushioned soles for maximum comfort.",AmazonLink:"https://amzn.to/4njnNsF",PriceNote:"Lightweight · Arch support",ImageURL:"https://m.media-amazon.com/images/I/71Ie4rSPhTL._AC_SY695_.jpg"},
-{Category:"Lifestyle",Title:"Powerful 4k camera in your pocket",Description:"Capture stunning photos and videos anywhere with advanced stabilization and instant sharing.",AmazonLink:"https://amzn.to/46tIRai",PriceNote:"4K video · Pocket-sized",ImageURL:"https://m.media-amazon.com/images/I/61uoYmbM9RL._AC_SL1500_.jpg"},
-{Category:"Travel",Title:"Organize your essentials",Description:"Durable toiletry bag with multiple compartments and waterproof lining for easy packing.",AmazonLink:"https://amzn.to/3V9TBUX",PriceNote:"Compact · Water-resistant",ImageURL:"https://m.media-amazon.com/images/I/91vh3Z-TauL._AC_SX679_.jpg"},
-{Category:"Travel",Title:"Noise-canceling for travel",Description:"Over-ear headphones with active noise cancellation and long battery life for uninterrupted listening.",AmazonLink:"https://amzn.to/4mPjBRG",PriceNote:"ANC · 30-hour battery",ImageURL:"https://m.media-amazon.com/images/I/610NdWdTLiL._AC_SL1500_.jpg"},
-{Category:"Travel",Title:"Compact power on the go",Description:"Portable charger with high-capacity battery and multiple USB ports for charging devices anywhere.",AmazonLink:"https://amzn.to/4gevs9o",PriceNote:"20,000mAh · Fast charge",ImageURL:"https://m.media-amazon.com/images/I/61RsRGUZORL._AC_SL1500_.jpg"},
-{Category:"Outdoors",Title:"Adventure-ready gear",Description:"Lightweight and durable backpack with multiple compartments and hydration bladder compatibility.",AmazonLink:"https://amzn.to/3IfnNLt",PriceNote:"Water-resistant · 20L capacity",ImageURL:"https://m.media-amazon.com/images/I/61eiZt4fmaL._AC_SL1200_.jpg"},
-{Category:"Outdoors",Title:"Stay warm and dry",Description:"Waterproof and insulated jacket with breathable fabric and adjustable hood for all-weather protection.",AmazonLink:"https://amzn.to/4m4WnGd",PriceNote:"Waterproof · Insulated",ImageURL:"https://m.media-amazon.com/images/I/81wTXql4fqL._AC_SX679_.jpg"},
-{Category:"Outdoors",Title:"Camping made easy",Description:"Compact and lightweight tent with easy setup and weather-resistant materials for outdoor adventures.",AmazonLink:"https://amzn.to/3HTYsqu",PriceNote:"2-person · Easy setup",ImageURL:"https://m.media-amazon.com/images/I/51FhbYn+e3L._AC_SL1500_.jpg"}
+{Title:"Adjustable Dumbbells Set",Description:"Compact adjustable dumbbells replace multiple weights and save space in your home gym.",Link:"https://amzn.to/4fitness1"},
+{Title:"Premium Yoga Mat",Description:"Non-slip, extra-thick mat for yoga, stretching, and core exercises.",Link:"https://amzn.to/4fitness2"},
+{Title:"Hot-Swappable Mechanical Keyboard",Description:"Type faster and win faster with customizable mechanical switches and anti-ghosting technology.",Link:"https://amzn.to/4mKeeDi"},
+{Title:"Travel Toiletry Bag",Description:"Organize your essentials with multiple compartments and waterproof lining for easy packing.",Link:"https://amzn.to/3V9TBUX"}
 ];
 
-// ================== Render Categories ==================
-const categories = [...new Set(products.map(p=>p.Category))];
-const categoriesDiv = document.getElementById('categories');
-categoriesDiv.innerHTML = `<button class="active" data-cat="All">All</button>` + categories.map(cat=>`<button data-cat="${cat}">${cat}</button>`).join('');
-const buttons = document.querySelectorAll('#categories button');
-buttons.forEach(btn => {
-    btn.addEventListener('click',()=> {
-        buttons.forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        renderProducts(btn.dataset.cat);
-    });
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', e=>{
+  const value = e.target.value.toLowerCase();
+  const featuredDiv = document.querySelector('.featured-grid');
+  let filtered = products.filter(p=> p.Title.toLowerCase().includes(value) || p.Description.toLowerCase().includes(value));
+  if(filtered.length === 0) { featuredDiv.innerHTML = '<p style="text-align:center; grid-column:1/-1;">No products found.</p>'; return; }
+  featuredDiv.innerHTML = filtered.map(p=>`
+    <div class="featured-card">
+      <img src="https://m.media-amazon.com/images/I/61eQkJ0g5KL._AC_SL1500_.jpg" alt="${p.Title}">
+      <div class="info">
+        <h3>${p.Title}</h3>
+        <p>${p.Description}</p>
+        <a href="${p.Link}" target="_blank" class="buy-button">Buy Now</a>
+      </div>
+    </div>
+  `).join('');
 });
-
-// ================== Render Products ==================
-const productsDiv = document.getElementById('products');
-function renderProducts(category="All",search=""){
-    let filtered = products.filter(p => 
-        (category==="All"||p.Category===category) && 
-        (p.Title.toLowerCase().includes(search.toLowerCase()) || p.Description.toLowerCase().includes(search.toLowerCase()))
-    );
-    productsDiv.innerHTML = filtered.map(p=>`
-        <div class="product-card">
-            <img src="${p.ImageURL}" alt="${p.Title}">
-            <div class="product-info">
-                <h3>${p.Title}</h3>
-                <p>${p.Description}</p>
-                <div class="price">${p.PriceNote}</div>
-                <a href="${p.AmazonLink}" target="_blank" class="buy-button">Buy Now</a>
-            </div>
-        </div>
-    `).join('');
-}
-
-// ================== Search ==================
-document.getElementById('search').addEventListener('input',e=>{
-    const category = document.querySelector('#categories button.active').dataset.cat;
-    renderProducts(category,e.target.value);
-});
-
-// ================== Initial Render ==================
-renderProducts();
 </script>
 
 </body>
