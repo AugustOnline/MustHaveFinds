@@ -8,12 +8,14 @@
 <style>
 /* ===================== RESET ===================== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Inter',sans-serif; background:#f5f7fb; color:#1f2937; line-height:1.6; }
+body { font-family:'Inter',sans-serif; background:#f5f7fb; color:#1f2937; line-height:1.6; transition: background 0.3s, color 0.3s; }
 
 /* ===================== HEADER ===================== */
 header { padding:2rem 1rem; text-align:center; background:linear-gradient(135deg,#4f46e5,#6366f1); color:#fff; }
 header h1 { font-size:2.5rem; margin-bottom:0.5rem; font-weight:700; }
 header p { font-size:1.2rem; color:rgba(255,255,255,0.85); }
+header button { margin-top:1rem; padding:0.5rem 1rem; border:none; border-radius:8px; cursor:pointer; background:#fff; color:#4f46e5; font-weight:600; transition: all 0.3s; }
+header button:hover { background:#e0e7ff; }
 
 /* ===================== SEARCH ===================== */
 #search-container { display:flex; justify-content:center; margin:2rem 1rem; }
@@ -28,16 +30,21 @@ header p { font-size:1.2rem; color:rgba(255,255,255,0.85); }
 
 /* ===================== PRODUCTS GRID ===================== */
 #products { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; padding:0 1rem 3rem; }
-.product-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; }
+.product-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; position:relative; }
 .product-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.15); }
 .product-card img { width:100%; height:220px; object-fit:cover; transition:transform 0.3s; }
 .product-card img:hover { transform:scale(1.05); }
 .product-info { padding:1rem; display:flex; flex-direction:column; flex:1; }
 .product-info h3 { font-size:1.25rem; margin-bottom:0.5rem; color:#1e293b; font-weight:600; }
-.product-info p { flex:1; font-size:0.95rem; margin-bottom:1rem; color:#475569; }
-.price { font-weight:700; color:#4f46e5; margin-bottom:0.5rem; }
+.product-info p { flex:1; font-size:0.95rem; margin-bottom:0.5rem; color:#475569; }
+.price { font-weight:700; color:#ff5722; margin-bottom:0.5rem; }
 .buy-button { display:inline-block; text-align:center; padding:0.75rem 1rem; background:#4f46e5; color:#fff; font-weight:600; border-radius:12px; transition:all 0.3s; text-decoration:none; }
 .buy-button:hover { background:#6366f1; transform:scale(1.05); }
+
+/* ===================== BADGES ===================== */
+.badge { position:absolute; top:10px; left:10px; background:#ff5722; color:#fff; padding:0.3rem 0.6rem; border-radius:8px; font-size:0.75rem; font-weight:600; }
+.rating { font-size:0.9rem; color:#fbbf24; margin-bottom:0.3rem; }
+.benefits { list-style:disc; margin:0.5rem 0; padding-left:1.2rem; color:#475569; font-size:0.9rem; }
 
 /* ===================== FOOTER ===================== */
 footer { text-align:center; padding:2rem 1rem; background:#1f2937; color:#fff; font-size:0.9rem; }
@@ -60,7 +67,7 @@ body.dark { background:#1f2937; color:#f5f7fb; }
 body.dark header { background:linear-gradient(135deg,#111827,#374151); }
 body.dark .product-card { background:#374151; box-shadow:0 6px 18px rgba(0,0,0,0.4); }
 body.dark .product-info h3 { color:#f5f7fb; }
-body.dark .product-info p { color:#d1d5db; }
+body.dark .product-info p, body.dark .benefits { color:#d1d5db; }
 body.dark .price { color:#a5b4fc; }
 body.dark .buy-button { background:#6366f1; }
 body.dark #categories button { background:#4b5563; color:#f5f7fb; }
@@ -72,7 +79,7 @@ body.dark #categories button.active { background:#4f46e5; color:#fff; }
 <header>
 <h1>Ultimate Product Showcase</h1>
 <p>Discover top gadgets, home essentials, gaming gear, and lifestyle products</p>
-<button id="toggle-dark" style="margin-top:1rem;padding:0.5rem 1rem;border:none;border-radius:8px;cursor:pointer;">Toggle Dark Mode</button>
+<button id="toggle-dark">Toggle Dark Mode</button>
 </header>
 
 <div id="search-container">
@@ -102,19 +109,7 @@ const products=[
 {Category:"Gaming Essentials",Title:"Sound pro on streams & calls",Description:"Plug-and-play USB mic with cardioid pickup — no mixer or drivers required.",AmazonLink:"https://amzn.to/45SHrGn",PriceNote:"Shock mount · Pop filter",ImageURL:"https://m.media-amazon.com/images/I/61u4FYXctPL._AC_SL1200_.jpg"},
 {Category:"Desk Setup",Title:"Eye-level monitor, clean desk",Description:"Lift your screen, stash your keyboard, and unlock instant posture points.",AmazonLink:"https://amzn.to/468USk2",PriceNote:"Wood & metal options",ImageURL:"https://m.media-amazon.com/images/I/51kULJHh4BL._AC_SL1500_.jpg"},
 {Category:"Desk Setup",Title:"One pad, all charged",Description:"Drop your phone and earbuds on a single wireless pad — fewer cables, more focus.",AmazonLink:"https://amzn.to/4n0B4Xl",PriceNote:"MagSafe-ready · Fast charge",ImageURL:"https://m.media-amazon.com/images/I/6101j7BOSLL._AC_SL1500_.jpg"},
-{Category:"Desk Setup",Title:"The desk mat upgrade",Description:"A smooth, oversized surface that keeps gear steady and your setup cohesive.",AmazonLink:"https://amzn.to/4m6PYdj",PriceNote:"Water-resistant · Non-slip",ImageURL:"https://m.media-amazon.com/images/I/71MVulxNSWL._AC_SL1500_.jpg"},
-{Category:"Smart Home",Title:"Control your home with your voice",Description:"Smart speaker with Alexa lets you play music, control smart devices, and get info hands-free.",AmazonLink:"https://amzn.to/3JHk1bX",PriceNote:"Far-field voice recognition",ImageURL:"https://m.media-amazon.com/images/I/61bA0fjrSXL._AC_SL1500_.jpg"},
-{Category:"Smart Home",Title:"See who’s there from anywhere",Description:"Video doorbell with motion detection, two-way talk, and night vision.",AmazonLink:"https://amzn.to/45ZT0vu",PriceNote:"1080p HD · Works with Alexa",ImageURL:"https://m.media-amazon.com/images/I/61ZQ3+1WI8L._AC_SL1500_.jpg"},
-{Category:"Smart Home",Title:"Set the mood with a tap",Description:"Smart light bulbs with millions of colors and shades of white, controllable via app or voice.",AmazonLink:"https://amzn.to/3V9nPYc",PriceNote:"Works with Alexa & Google",ImageURL:"https://m.media-amazon.com/images/I/610pDnVRosL._AC_SL1500_.jpg"},
-{Category:"Lifestyle",Title:"Stay hydrated in style",Description:"Insulated stainless steel water bottle keeps drinks cold for 24 hours or hot for 12 hours.",AmazonLink:"https://amzn.to/47AHLuD",PriceNote:"Sweat-proof · BPA-free",ImageURL:"https://m.media-amazon.com/images/I/61Y-CnKRxML._AC_SL1500_.jpg"},
-{Category:"Lifestyle",Title:"Ultimate comfort for all-day wear",Description:"Ergonomic sneakers with breathable mesh and cushioned soles for maximum comfort.",AmazonLink:"https://amzn.to/4njnNsF",PriceNote:"Lightweight · Arch support",ImageURL:"https://m.media-amazon.com/images/I/71Ie4rSPhTL._AC_SY695_.jpg"},
-{Category:"Lifestyle",Title:"Powerful 4k camera in your pocket",Description:"Capture stunning photos and videos anywhere with advanced stabilization and instant sharing.",AmazonLink:"https://amzn.to/46tIRai",PriceNote:"4K video · Pocket-sized",ImageURL:"https://m.media-amazon.com/images/I/61uoYmbM9RL._AC_SL1500_.jpg"},
-{Category:"Travel",Title:"Organize your essentials",Description:"Durable toiletry bag with multiple compartments and waterproof lining for easy packing.",AmazonLink:"https://amzn.to/3V9TBUX",PriceNote:"Compact · Water-resistant",ImageURL:"https://m.media-amazon.com/images/I/91vh3Z-TauL._AC_SX679_.jpg"},
-{Category:"Travel",Title:"Noise-canceling for travel",Description:"Over-ear headphones with active noise cancellation and long battery life for uninterrupted listening.",AmazonLink:"https://amzn.to/4mPjBRG",PriceNote:"ANC · 30-hour battery",ImageURL:"https://m.media-amazon.com/images/I/610NdWdTLiL._AC_SL1500_.jpg"},
-{Category:"Travel",Title:"Compact power on the go",Description:"Portable charger with high-capacity battery and multiple USB ports for charging devices anywhere.",AmazonLink:"https://amzn.to/4gevs9o",PriceNote:"20,000mAh · Fast charge",ImageURL:"https://m.media-amazon.com/images/I/61RsRGUZORL._AC_SL1500_.jpg"},
-{Category:"Outdoors",Title:"Adventure-ready gear",Description:"Lightweight and durable backpack with multiple compartments and hydration bladder compatibility.",AmazonLink:"https://amzn.to/3IfnNLt",PriceNote:"Water-resistant · 20L capacity",ImageURL:"https://m.media-amazon.com/images/I/61eiZt4fmaL._AC_SL1200_.jpg"},
-{Category:"Outdoors",Title:"Stay warm and dry",Description:"Waterproof and insulated jacket with breathable fabric and adjustable hood for all-weather protection.",AmazonLink:"https://amzn.to/4m4WnGd",PriceNote:"Waterproof · Insulated",ImageURL:"https://m.media-amazon.com/images/I/81wTXql4fqL._AC_SX679_.jpg"},
-{Category:"Outdoors",Title:"Camping made easy",Description:"Compact and lightweight tent with easy setup and weather-resistant materials for outdoor adventures.",AmazonLink:"https://amzn.to/3HTYsqu",PriceNote:"2-person · Easy setup",ImageURL:"https://m.media-amazon.com/images/I/51FhbYn+e3L._AC_SL1500_.jpg"}
+{Category:"Desk Setup",Title:"The desk mat upgrade",Description:"A smooth, oversized surface that keeps gear steady and your setup cohesive.",AmazonLink:"https://amzn.to/4m6PYdj",PriceNote:"Water-resistant · Non-slip",ImageURL:"https://m.media-amazon.com/images/I/71MVulxNSWL._AC_SL1500_.jpg"}
 ];
 
 // ================== RENDER CATEGORIES ==================
@@ -133,20 +128,32 @@ buttons.forEach(btn=>{
 // ================== RENDER PRODUCTS ==================
 const productsDiv = document.getElementById('products');
 const noResultsDiv = document.getElementById('no-results');
+
 function renderProducts(category="All",search=""){
     let filtered = products.filter(p=> (category==="All"||p.Category===category) && (p.Title.toLowerCase().includes(search.toLowerCase())||p.Description.toLowerCase().includes(search.toLowerCase())));
     if(filtered.length===0){ noResultsDiv.style.display='block'; } else { noResultsDiv.style.display='none'; }
-    productsDiv.innerHTML = filtered.map(p=>`
+    productsDiv.innerHTML = filtered.map(p=>{
+        // Generate fake rating stars for social proof
+        const stars = '⭐⭐⭐⭐☆';
+        // Random benefits (for demo)
+        const benefits = ['Quick setup','Best value','Highly rated'];
+        return `
         <div class="product-card">
+            <div class="badge">${p.PriceNote.includes('Top seller') ? 'Top Seller' : 'Prime Eligible'}</div>
             <img src="${p.ImageURL}" alt="${p.Title}">
             <div class="product-info">
                 <h3>${p.Title}</h3>
+                <div class="rating">${stars}</div>
                 <p>${p.Description}</p>
+                <ul class="benefits">
+                  ${benefits.map(b=>`<li>${b}</li>`).join('')}
+                </ul>
                 <div class="price">${p.PriceNote}</div>
-                <a href="${p.AmazonLink}" target="_blank" class="buy-button">Buy Now</a>
+                <a href="${p.AmazonLink}" target="_blank" class="buy-button">Shop Now</a>
             </div>
         </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // ================== SEARCH FUNCTION ==================
