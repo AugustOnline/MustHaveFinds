@@ -3,98 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Gadgets – Smart Essentials You Need</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #6c63ff, #4a47a3);
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    main h2 {
-      color: #4a47a3;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    a.back-link {
-      display: inline-block;
-      margin: 1rem;
-      text-decoration: none;
-      color: #6c63ff;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-  </style>
+  <title>Home Gadgets | Nitish’s Picks</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <h1>Home Gadgets</h1>
-    <p>Smart essentials you need to upgrade your everyday life</p>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-blue-700 text-white p-6 shadow-md">
+    <h1 class="text-3xl font-bold">Home Gadgets</h1>
+    <p class="mt-2">Smart tools that make life easier every day.</p>
   </header>
 
-  <a href="index.html" class="back-link">← Back to Home</a>
-
-  <main>
-    <section>
-      <h2>Why You Need Home Gadgets</h2>
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto p-6">
+    <!-- Intro -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Why You Need Home Gadgets</h2>
+      <p class="mb-4">
+        Home gadgets aren’t just about convenience—they save time, reduce stress, and keep your space running smoothly.  
+        From keeping your air clean to making sure you never lose your keys, the right gadgets make everyday living smarter.
+      </p>
       <p>
-        Home gadgets are no longer just “nice-to-haves.” They’ve become essentials for saving time, adding comfort, and bringing a touch of smart convenience to daily life. Whether it’s a robotic vacuum that cleans while you relax, or a smart plug that gives you instant control over your appliances, these products pay for themselves in ease and efficiency.
+        Below are some of the best picks you should consider adding to your home.
       </p>
     </section>
 
-    <section>
-      <h2>Examples of Must-Have Home Gadgets</h2>
-      <p>
-        - <strong>Smart Plugs:</strong> Turn lights and appliances on/off with a tap or voice command.  
-        - <strong>Robot Vacuums:</strong> Keep your floors clean with zero effort.  
-        - <strong>Smart Lights:</strong> Control brightness and color to match your mood.  
-        - <strong>Home Assistants:</strong> Hands-free help for reminders, music, and information.  
-      </p>
-    </section>
+    <!-- Product Grid -->
+    <section class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- Air Purifier -->
+      <article class="bg-white shadow-md rounded-lg p-6">
+        <img src="https://m.media-amazon.com/images/I/81xY0M0Ea9L._AC_SL1500_.jpg" alt="Air Purifier" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold mb-2">Air Purifier</h3>
+        <p class="mb-3">Breathe cleaner air with a smart purifier that captures dust, pollen, and allergens.</p>
+        <a href="https://www.amazon.com/dp/B09NQNGCWR" target="_blank" class="text-blue-600 font-medium hover:underline">Shop Now →</a>
+      </article>
 
-    <section>
-      <h2>Why Buy Them Now?</h2>
-      <p>
-        Investing in home gadgets today means building a more comfortable and efficient lifestyle. Prices are lower than ever, and the tech is only getting smarter. Every gadget you add is a small step toward a home that works for you, not the other way around.
-      </p>
-      <p>
-        If you want to save time, reduce stress, and make your living space feel truly modern, these are the products to start with.
-      </p>
+      <!-- Smart Lock -->
+      <article class="bg-white shadow-md rounded-lg p-6">
+        <img src="https://m.media-amazon.com/images/I/71p0w3sTqVL._AC_SL1500_.jpg" alt="Smart Lock" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold mb-2">Smart Lock</h3>
+        <p class="mb-3">Secure your home and unlock doors with your phone or voice assistant.</p>
+        <a href="https://www.amazon.com/dp/B08R5QY5PF" target="_blank" class="text-blue-600 font-medium hover:underline">Shop Now →</a>
+      </article>
+
+      <!-- Robot Vacuum -->
+      <article class="bg-white shadow-md rounded-lg p-6">
+        <img src="https://m.media-amazon.com/images/I/71CzN7q3WZL._AC_SL1500_.jpg" alt="Robot Vacuum" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold mb-2">Robot Vacuum</h3>
+        <p class="mb-3">Let a robot handle your cleaning—smart mapping and scheduling included.</p>
+        <a href="https://www.amazon.com/dp/B099P8D91M" target="_blank" class="text-blue-600 font-medium hover:underline">Shop Now →</a>
+      </article>
+
+      <!-- Smart Thermostat -->
+      <article class="bg-white shadow-md rounded-lg p-6">
+        <img src="https://m.media-amazon.com/images/I/71M0kSMjXDL._AC_SL1500_.jpg" alt="Smart Thermostat" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold mb-2">Smart Thermostat</h3>
+        <p class="mb-3">Control your home’s temperature remotely and save energy with automation.</p>
+        <a href="https://www.amazon.com/dp/B07N1F7WGD" target="_blank" class="text-blue-600 font-medium hover:underline">Shop Now →</a>
+      </article>
+
+      <!-- Key Finder -->
+      <article class="bg-white shadow-md rounded-lg p-6">
+        <img src="https://m.media-amazon.com/images/I/71XhA4E8BKL._AC_SL1500_.jpg" alt="Key Finder" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold mb-2">Key Finder</h3>
+        <p class="mb-3">Never lose your keys again with a Bluetooth tracker linked to your phone.</p>
+        <a href="https://www.amazon.com/dp/B08HRX2XXT" target="_blank" class="text-blue-600 font-medium hover:underline">Shop Now →</a>
+      </article>
+
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 YourSiteName – Affiliate links may earn us a commission</p>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-4 mt-10">
+    <p>© 2025 Nitish’s Picks – Home Gadgets</p>
   </footer>
 </body>
 </html>
