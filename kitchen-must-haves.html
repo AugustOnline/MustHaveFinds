@@ -1,75 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kitchen Must-Haves | Nitish’s Picks</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Must Haves</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Same styling as index.html */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', sans-serif; background:#f5f7fb; color:#1f2937; line-height:1.6; }
+
+header { padding:2rem 1rem; text-align:center; background:linear-gradient(135deg,#4f46e5,#6366f1); color:#fff; }
+header h1 { font-size:2.5rem; margin-bottom:0.5rem; font-weight:700; }
+header p { font-size:1.2rem; color:rgba(255,255,255,0.85); }
+
+#products { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; padding:2rem 1rem 3rem; }
+.product-card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.15); }
+.product-card img { width:100%; height:220px; object-fit:cover; transition:transform 0.3s; }
+.product-card img:hover { transform:scale(1.05); }
+.product-info { padding:1rem; display:flex; flex-direction:column; flex:1; }
+.product-info h3 { font-size:1.25rem; margin-bottom:0.5rem; color:#1e293b; font-weight:600; }
+.product-info p { flex:1; font-size:0.95rem; margin-bottom:1rem; color:#475569; }
+.price { font-weight:700; color:#4f46e5; margin-bottom:0.5rem; }
+.buy-button { display:inline-block; text-align:center; padding:0.75rem 1rem; background:#4f46e5; color:#fff; font-weight:600; border-radius:12px; transition:all 0.3s; text-decoration:none; }
+.buy-button:hover { background:#6366f1; transform:scale(1.05); }
+
+footer { text-align:center; padding:2rem 1rem; background:#1f2937; color:#fff; font-size:0.9rem; }
+
+@media(max-width:768px){ header h1{font-size:2rem;} }
+@media(max-width:480px){ .product-card img{height:180px;} header h1{font-size:1.8rem;} }
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- Header -->
-  <header class="bg-yellow-700 text-white p-6 shadow-md">
-    <h1 class="text-3xl font-bold">Kitchen Must-Haves</h1>
-    <p class="mt-2">Tools every home cook should own.</p>
-  </header>
+<body>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto p-6">
-    <!-- Intro -->
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Why Kitchen Gear Matters</h2>
-      <p class="mb-4">
-        Cooking at home saves money, keeps you healthy, and lets you experiment with flavors.  
-        But the right tools make all the difference—cutting down prep time, making meals taste better, and keeping your kitchen stress-free.
-      </p>
-      <p>
-        Whether you’re a beginner or a seasoned chef, these must-haves help you get meals on the table faster, easier, and with more fun.
-      </p>
-    </section>
+<header>
+<h1>Kitchen Must Haves</h1>
+<p>Essential tools and gadgets that make cooking easier, faster, and more fun.</p>
+</header>
 
-    <!-- Essentials List -->
-    <section class="grid gap-8">
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Chef’s Knife</h3>
-        <p class="mb-3">
-          A sharp, reliable chef’s knife is the single most important tool in any kitchen.  
-          It handles everything from chopping vegetables to slicing meats with ease.
-        </p>
-        <a href="#" class="text-yellow-600 font-medium hover:underline">See top picks →</a>
-      </article>
+<div id="products"></div>
 
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Cutting Board</h3>
-        <p class="mb-3">
-          A sturdy cutting board protects your counters and makes prep safer and cleaner.  
-          Wooden or plastic, it’s a must-have for every meal.
-        </p>
-        <a href="#" class="text-yellow-600 font-medium hover:underline">See recommendations →</a>
-      </article>
+<footer>
+<p>&copy; 2025 Ultimate Product Showcase. All rights reserved. | <a href="index.html" style="color:#a5b4fc;">Back to Home</a></p>
+</footer>
 
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Cast Iron Skillet</h3>
-        <p class="mb-3">
-          From searing steak to baking cornbread, a cast iron skillet is versatile, durable, and improves with every use.  
-          It’s the secret weapon of great home cooking.
-        </p>
-        <a href="#" class="text-yellow-600 font-medium hover:underline">Browse options →</a>
-      </article>
+<script>
+// Kitchen Must Haves product data
+const products = [
+  {Category:"Kitchen Must Haves",Title:"Blend anything in seconds",Description:"Powerful blender with multiple speeds — perfect for smoothies, sauces, and frozen treats.",AmazonLink:"https://amzn.to/4example1",PriceNote:"1200W · Dishwasher-safe",ImageURL:"https://m.media-amazon.com/images/I/71+8YxFJ9qL._AC_SL1500_.jpg"},
+  {Category:"Kitchen Must Haves",Title:"Cut prep time in half",Description:"All-in-one vegetable chopper and slicer with interchangeable blades.",AmazonLink:"https://amzn.to/4example2",PriceNote:"8 blades · Easy clean",ImageURL:"https://m.media-amazon.com/images/I/81Q+6PcL5DL._AC_SL1500_.jpg"},
+  {Category:"Kitchen Must Haves",Title:"Cook perfect rice every time",Description:"Smart rice cooker with keep-warm function and multiple grain settings.",AmazonLink:"https://amzn.to/4example3",PriceNote:"5-cup · Non-stick",ImageURL:"https://m.media-amazon.com/images/I/71Ykz9PVY-L._AC_SL1500_.jpg"}
+];
 
-      <article class="bg-white shadow-md rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-2">Blender</h3>
-        <p class="mb-3">
-          Smoothies, soups, sauces, and more—a good blender makes meal prep faster and adds endless variety to your kitchen.  
-          You’ll use it way more than you think.
-        </p>
-        <a href="#" class="text-yellow-600 font-medium hover:underline">Check deals →</a>
-      </article>
-    </section>
-  </main>
+const productsDiv = document.getElementById('products');
+productsDiv.innerHTML = products.map(p=>`
+  <div class="product-card">
+    <img src="${p.ImageURL}" alt="${p.Title}">
+    <div class="product-info">
+      <h3>${p.Title}</h3>
+      <p>${p.Description}</p>
+      <div class="price">${p.PriceNote}</div>
+      <a href="${p.AmazonLink}" target="_blank" class="buy-button">Buy Now</a>
+    </div>
+  </div>
+`).join('');
+</script>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white text-center p-4 mt-10">
-    <p>© 2025 Nitish’s Picks – Kitchen Must-Haves</p>
-  </footer>
 </body>
 </html>
